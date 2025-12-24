@@ -1,0 +1,14 @@
+.selected-song {
+    cursor: pointer;
+}
+
+.selected-song:hover {
+    color: aqua;
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+.delete-btn button {
+    cursor: pointer;
+    font-weight: 700;
+}
