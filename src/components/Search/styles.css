@@ -1,9 +1,10 @@
 
 .search-input {
+    display: flex;
     width: 300px;
     height: 30px;
     border-radius: 15px;
     border: none;
     padding: 0 15px;
-    margin: 15px 0;
+    margin: 0 auto;
 }
