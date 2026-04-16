@@ -1,6 +1,7 @@
 import React from "react";
 import {useLocation, useParams} from "react-router";
 import useFetch from "../../hooks/useFetch";
+import {SongDetailsContainer, SongDetailsTitle} from "./styles";
 
 export const SongDetails = () => {
   const location = useLocation();
@@ -14,18 +15,19 @@ export const SongDetails = () => {
   const currentSong = songs ? songs[0] : null;
 
   return (
-    <section>
-      <h2>Song Details</h2>
+    <SongDetailsContainer>
+      <SongDetailsTitle>Song Details</SongDetailsTitle>
       {isLoading && <p>Loading...</p>}
       {error && <p>Error: {error}</p>}
       {currentSong && (
-        <div className="artist-container">
+        <div>
           <h3>{currentSong.strArtist}</h3>
-          <div className="artist-info">
-            <p className="artist-biography">{currentSong.strAlbum}</p>
+          <div>
+            <p>{currentSong.strTrack}</p>
+            <p>{currentSong.strAlbum}</p>
           </div>
         </div>
       )}
-    </section>
+    </SongDetailsContainer>
   );
 };

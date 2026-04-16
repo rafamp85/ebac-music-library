@@ -1,9 +1,0 @@
-h1 {
-    font-weight: 700;
-    cursor: pointer;
-}
-
-h1:hover {
-    color: cadetblue;
-    text-decoration: underline;
-}

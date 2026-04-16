@@ -1,9 +1,9 @@
 
 import React, {useEffect, useState} from "react";
-import Header from "../Header/Header";
 import useFetch from "../../hooks/useFetch";
 import Album from "../Album/Album";
 import {useLocation} from "react-router";
+import {LibraryTitle} from "./styles";
 
 interface LibraryProps {
   url?: string;
@@ -47,7 +47,7 @@ const Library = () => {
 
     return (
       <>
-          <h2>Albums</h2>
+          <LibraryTitle>Albums</LibraryTitle>
           { renderContent() }
       </>
     )

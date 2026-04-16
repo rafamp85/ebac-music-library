@@ -1,6 +1,6 @@
 import React from "react";
-import './styles.css';
 import {useNavigate} from "react-router";
+import {SongArticle, SongSpan, SongButtonSpan} from "./styles";
 
 type SongT = {
   idTrack: string;
@@ -36,19 +36,19 @@ const Song = ({song, isAdded}: SongProps) => {
 
     return (
       <>
-        <article className="songs-list">
-          <span className="track-number">{song.intTrackNumber}</span>
-          <span className="selected-song">{song.strTrack}</span>
-          <span className="artist-name" onClick={onSelectArtist}>{song.strArtist}</span>
-          <span className="album-name">{song.strAlbum}</span>
-          <span className="duration">{formattedDuration}</span>
+        <SongArticle>
+          <SongSpan>{song.intTrackNumber}</SongSpan>
+          <SongSpan onClick={onSelectArtist}>{song.strTrack}</SongSpan>
+          <SongSpan>{song.strArtist}</SongSpan>
+          <SongSpan>{song.strAlbum}</SongSpan>
+          <SongSpan songPeriod={parseInt(song.intDuration)}>{formattedDuration}</SongSpan>
           {
             isAdded &&
-              <span className="delete-btn">
+              <SongButtonSpan className="delete-btn">
                 <button onClick={onAddSong}><i className="fa fa-plus"></i></button>
-              </span>
+              </SongButtonSpan>
           }
-        </article>
+        </SongArticle>
       </>
     )
 }

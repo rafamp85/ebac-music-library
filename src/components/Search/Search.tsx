@@ -1,5 +1,5 @@
 import React, {ChangeEvent, useState} from "react";
-import './styles.css';
+import {SearchInput} from "./styles";
 
 interface Props {
   searchAlbum: string;
@@ -21,13 +21,12 @@ const Search = ({searchAlbum, setSearchAlbum}: Props) => {
   return (
     <section>
       <form onSubmit={onSubmit}>
-        <input
+        <SearchInput
           type="text"
           name="search"
           value={internalSearch}
-          onChange={(e ) => setInternalSearch(e.target.value)}
+          onChange={(e) => setInternalSearch(e.target.value)}
           placeholder="Busca tu artisto favorito"
-          className="search-input"
         />
       </form>
     </section>

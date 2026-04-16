@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from "react";
-import './styles.css';
 import Search from "../Search/Search";
-import Library from "../Library/Library";
 import {useNavigate} from "react-router";
+import {HeaderSection, HeaderTitle} from "./styles";
 
 const Header = () => {
 
@@ -14,14 +13,18 @@ const Header = () => {
   useEffect(() => {
     console.log(searchAlbum);
     navigate('/', {state: {searchAlbum}});
-    setUrl(`https://www.theaudiodb.com/api/v1/json/123/searchalbum.php?s=${searchAlbum}`);
+    setUrl(`https://www.theaudiodb.com/api/v1/json/123/search.php?s=${searchAlbum}`);
   }, [searchAlbum]);
 
   return (
     <>
-      <header>
-        <h1 onClick={() => navigate('/')}>Music Lovers App</h1>
-      </header>
+      <HeaderSection>
+        <HeaderTitle
+          onClick={() => navigate('/')}>
+          Music Lovers App
+        </HeaderTitle>
+      </HeaderSection>
+
       <Search
         searchAlbum={searchAlbum}
         setSearchAlbum={setSearchAlbum}

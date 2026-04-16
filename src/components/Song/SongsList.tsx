@@ -2,6 +2,7 @@ import React from "react";
 import useFetch from "../../hooks/useFetch";
 import {useLocation, useParams} from "react-router";
 import Song from './Song';
+import {SongListContainer, SongListArticle, SongListDiv, SongListImage, SongListTitle} from "./styles";
 
 export const SongsList = () => {
   const location = useLocation();
@@ -15,13 +16,13 @@ export const SongsList = () => {
   const { songs, isLoading, error } =  useFetch({url});
 
   return (
-    <>
-      <article className="album-header">
-        <h2 className="album-header-title">{album.strAlbum}</h2>
-        <img className="album-header-image" src={album.strAlbumThumb} alt="Imagen de ejemplo"/>
-      </article>
+    <SongListContainer>
+      <SongListArticle>
+        <SongListTitle>{album.strAlbum}</SongListTitle>
+        <SongListImage src={album.strAlbumThumb} alt="Imagen de ejemplo"/>
+      </SongListArticle>
 
-      <div className="songs-container">
+      <SongListDiv>
         {!idAlbum && <p>Selecciona un álbum para ver las canciones.</p>}
         {isLoading && <p>Cargando...</p>}
         {error && <p>Error: {error}</p>}
@@ -30,8 +31,8 @@ export const SongsList = () => {
             <Song key={song.idTrack} song={song} isAdded={true} />
           ))
         }
-      </div>
-    </>
+      </SongListDiv>
+    </SongListContainer>
   );
 };
 

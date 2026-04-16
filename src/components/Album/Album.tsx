@@ -1,5 +1,6 @@
 import React from "react";
 import {useNavigate} from "react-router";
+import {AlbumArticle, AlbumArtist, AlbumSection, AlbumTitle, AlbumImage, AlbumBackImage} from "./styles";
 
 type AlbumT = {
   idArtist: string;
@@ -8,6 +9,7 @@ type AlbumT = {
   strArtist: string;
   strAlbum: string;
   strAlbumThumb: string;
+  strAlbumBack: string;
 }
 
 interface AlbumProps {
@@ -17,7 +19,7 @@ interface AlbumProps {
 export const Album = ({album}: AlbumProps) => {
   const navigate = useNavigate();
 
-  const { strAlbum, strArtist, strAlbumThumb } = album;
+  const { strAlbum, strArtist, strAlbumThumb, strAlbumBack } = album;
 
   const onSelectAlbum = () => {
     navigate(`/album/${album.idAlbum}`, { state: { idAlbum: album.idAlbum, album } });
@@ -25,17 +27,20 @@ export const Album = ({album}: AlbumProps) => {
 
   return (
     <>
-      <section className="album-list" onClick={onSelectAlbum}>
-        <article className="album-body">
-          <h4 className="album-title">{strAlbum}</h4>
-          <span className="artist-name">{strArtist}</span>
-        </article>
-        <img
+      <AlbumSection onClick={onSelectAlbum}>
+        <AlbumArticle>
+          <AlbumTitle>{strAlbum}</AlbumTitle>
+          <AlbumArtist>{strArtist}</AlbumArtist>
+        </AlbumArticle>
+        <AlbumImage
           src={strAlbumThumb}
           alt={strAlbum}
-          className="album-image"
         />
-      </section>
+      </AlbumSection>
+
+      {
+        strAlbumBack && <AlbumBackImage src={strAlbumBack} alt={strAlbum}/>
+      }
     </>
   );
 };
