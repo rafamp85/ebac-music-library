@@ -11,9 +11,30 @@ const HeaderTitle = styled.h1`
     }
 `;
 
+const HeaderNav = styled.div`
+    display: flex;
+    gap: 12px;
+    align-items: center;
+`;
+
+const HeaderLinkButton = styled.button`
+    border: 1px solid cadetblue;
+    background: transparent;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: 700;
+
+    &:hover {
+        color: cadetblue;
+        border-color: white;
+    }
+`;
+
 const HeaderSection = styled.section`
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-items: center;
     justify-content: space-between;
     align-items: center;
@@ -23,4 +44,6 @@ const HeaderSection = styled.section`
 export {
   HeaderTitle,
   HeaderSection,
+  HeaderNav,
+  HeaderLinkButton,
 }

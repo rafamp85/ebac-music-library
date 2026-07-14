@@ -5,10 +5,6 @@ import Album from "../Album/Album";
 import {useLocation} from "react-router";
 import {LibraryTitle} from "./styles";
 
-interface LibraryProps {
-  url?: string;
-}
-
 const Library = () => {
     const location = useLocation();
     const searchAlbum = location.state?.searchAlbum || '';
@@ -19,9 +15,9 @@ const Library = () => {
 
     useEffect(() => {
       if (searchAlbum) {
-        setUrl(`https://www.theaudiodb.com/api/v1/json/123/searchalbum.php?s=${location.state.searchAlbum}`);
+        setUrl(`https://www.theaudiodb.com/api/v1/json/123/searchalbum.php?s=${searchAlbum}`);
       }
-    }, [searchAlbum, location])
+    }, [searchAlbum])
 
     const renderAlbums = () => (
       <section>

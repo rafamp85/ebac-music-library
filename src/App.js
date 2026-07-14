@@ -3,6 +3,7 @@ import './styles/styles.css';
 import {Route, Routes} from "react-router";
 import Header from "./components/Header/Header";
 import SongsList from "./components/Song/SongsList";
+import SavedSongsList from "./components/Song/SavedSongsList";
 import {Artist} from "./components/Artist/Artist";
 import {SongDetails} from "./components/Song/SongDetails";
 import {ThemeProvider} from "styled-components";
@@ -19,6 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Library />} />
           <Route path="/album/:id" element={<SongsList />} />
+          <Route path="/saved" element={<SavedSongsList />} />
           <Route path="/song/:id/" element={<SongDetails />} />
           <Route path="/artist/:id" element={<Artist />} />
         </Routes>

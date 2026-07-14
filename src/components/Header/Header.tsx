@@ -1,20 +1,18 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import Search from "../Search/Search";
 import {useNavigate} from "react-router";
-import {HeaderSection, HeaderTitle} from "./styles";
+import {HeaderLinkButton, HeaderNav, HeaderSection, HeaderTitle} from "./styles";
 
 const Header = () => {
 
   const navigate = useNavigate();
 
   const [searchAlbum, setSearchAlbum] = useState<string>("");
-  const [url, setUrl] = useState<string>("");
 
-  useEffect(() => {
-    console.log(searchAlbum);
-    navigate('/', {state: {searchAlbum}});
-    setUrl(`https://www.theaudiodb.com/api/v1/json/123/search.php?s=${searchAlbum}`);
-  }, [searchAlbum]);
+  const onSearchAlbum = (value: string) => {
+    setSearchAlbum(value);
+    navigate('/', {state: {searchAlbum: value}});
+  };
 
   return (
     <>
@@ -23,11 +21,17 @@ const Header = () => {
           onClick={() => navigate('/')}>
           Music Lovers App
         </HeaderTitle>
+
+        <HeaderNav>
+          <HeaderLinkButton onClick={() => navigate('/saved')}>
+            Saved Songs
+          </HeaderLinkButton>
+        </HeaderNav>
       </HeaderSection>
 
       <Search
         searchAlbum={searchAlbum}
-        setSearchAlbum={setSearchAlbum}
+        setSearchAlbum={onSearchAlbum}
       />
     </>
   )

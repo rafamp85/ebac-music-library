@@ -1,4 +1,4 @@
-import React from "react";
+     import React from "react";
 import {useNavigate} from "react-router";
 import {SongArticle, SongSpan, SongButtonSpan} from "./styles";
 
@@ -15,9 +15,10 @@ type SongT = {
 interface SongProps {
   song: SongT,
   isAdded?: boolean,
+  onAddSong?: (song: SongT) => void,
 }
 
-const Song = ({song, isAdded}: SongProps) => {
+const Song = ({song, isAdded, onAddSong}: SongProps) => {
     const navigate = useNavigate();
 
     const totalSeconds = parseInt(song.intDuration || '0') / 1000;
@@ -26,8 +27,10 @@ const Song = ({song, isAdded}: SongProps) => {
     const formattedDuration = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
 
     // TODO: Backend implementation needed
-    const onAddSong = () => {
-      // Implementar acción si es necesario
+    const onAddSongLibrary = () => {
+      if (onAddSong) {
+        onAddSong(song);
+      }
     }
 
     const onSelectArtist = () => {
@@ -45,7 +48,7 @@ const Song = ({song, isAdded}: SongProps) => {
           {
             isAdded &&
               <SongButtonSpan className="delete-btn">
-                <button onClick={onAddSong}><i className="fa fa-plus"></i></button>
+                <button onClick={onAddSongLibrary}><i className="fa fa-plus"></i></button>
               </SongButtonSpan>
           }
         </SongArticle>
